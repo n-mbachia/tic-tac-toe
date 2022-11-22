@@ -11,7 +11,7 @@ def display_board(board):
 		print("|       " * 3,"|",sep="")
 		print("+-------" * 3,"+",sep="")
 
-"""  
+    
 def enter_move(board):
 	ok = False	# fake assumption - we need it to enter the loop
 	while not ok:
@@ -96,4 +96,3 @@ elif victor == 'me':
 else:
 	print("Tie!")
 
-"""
