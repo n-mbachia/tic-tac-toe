@@ -1,4 +1,5 @@
 import random
+
 print("Welcome to tic tac toe")
 print("----------------------")
 
@@ -101,15 +102,17 @@ while(leaveLoop == False):
   # it's the player turn
   if(turnCounter % 2 == 0):
     printGameBoard()
-    #try:
-    numberPicker = int(input("\nPick a number between [1 - 9]: "))
-    if(numberPicker >= 1 or numberPicker <= 9):
-      modifyArray(numberPicker, "X")
-      possibleNumbers.remove(numberPicker)
-    #except:
-    else:
-      print("Please try again. Pick a number between [1 - 9]: ")
-    turnCounter += 1
+    try:
+      numberPicker = int(input("\nPick a number between [1 - 9]: "))
+      if(numberPicker >= 1 or numberPicker <= 9):
+        modifyArray(numberPicker, "X")
+        possibleNumbers.remove(numberPicker)
+      turnCounter += 1
+      #else:
+    except:
+      if(numberPicker > 9):
+        print("Please try again. Pick a number between [1 - 9]: ")
+    #turnCounter += 1
   # the other player's turn(In this case, it is the computer's turn)
   else:
     while(True):
@@ -123,8 +126,10 @@ while(leaveLoop == False):
 
   winner = winnerCheck(gameBoard)
   if(winner != "N"):
-    print("\n Gave Over!!!! Thank you for playing :-) ")
+    printGameBoard()
+    print("\nThe winner is,", winner, "!!!! Thank you for playing :-)")
     break
-  else:
+  elif(winner == "N"):
+    print("Its a tie between players!!")
     printGameBoard()
   
