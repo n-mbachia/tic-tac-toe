@@ -43,54 +43,38 @@ def modifyArray(num, turn):
 def winnerCheck(gameBoard):
 # Horizontal winner scenerio for both X & O (x-axis)
   if(gameBoard[0][0] == "X" and gameBoard[0][1] == "X" and gameBoard[0][2] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[0][0] == "O" and gameBoard[0][1] == "O" and gameBoard[0][2] == "O"):
-    print("O has Won!!!")
     return "O"
   elif(gameBoard[1][0] == "X" and gameBoard[1][1] == "X" and gameBoard[1][2] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[1][0] == "O" and gameBoard[1][1] == "O" and gameBoard[1][2] == "O"):
-    print("X has Won!!!")
-    return "X"
+    return "O"
   elif(gameBoard[2][0] == "X" and gameBoard[2][1] == "X" and gameBoard[2][2] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[2][0] == "O" and gameBoard[2][1] == "O" and gameBoard[2][2] == "O"):
-    print("O has Won!!!")
     return "O"
 # The vertical winner scenario for both X & O (y-axis)
   elif(gameBoard[0][0] == "X" and gameBoard[1][0] == "X" and gameBoard[2][0] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[0][0] == "O" and gameBoard[1][0] == "O" and gameBoard[2][0] == "O"):
-    print("O has Won!!!")
     return "O"
   elif(gameBoard[0][1] == "X" and gameBoard[1][1] == "X" and gameBoard[2][1] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[0][1] == "O" and gameBoard[1][1] == "O" and gameBoard[2][1] == "O"):
-    print("O has Won!!!")
     return "O"
   elif(gameBoard[0][2] == "X" and gameBoard[1][2] == "X" and gameBoard[2][2] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[0][2] == "O" and gameBoard[1][2] == "0" and gameBoard[2][2] == "0"):
-    print("O has Won!!!")
     return "O"
   # The diagonally winner check scenario
   elif(gameBoard[0][0] == "X" and gameBoard[1][1] == "X" and gameBoard[2][2] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[0][0] == "O" and gameBoard[1][1] == "O" and gameBoard[2][2] == "O"):
-    print("O has Won!!!")
     return "O"
   elif(gameBoard[0][0] == "X" and gameBoard[1][1] == "X" and gameBoard[2][2] == "X"):
-    print("X has Won!!!")
     return "X"
   elif(gameBoard[0][0] == "O" and gameBoard[1][1] == "O" and gameBoard[2][2] == "O"):
-    print("O has Won!!!")
     return "O"
   else:
     return "N"
@@ -103,17 +87,18 @@ while(leaveLoop == False):
   if(turnCounter % 2 == 0):
     printGameBoard()
     try:
-      numberPicker = int(input("\nPick a number between [1 - 9]: "))
-      if(numberPicker >= 1 or numberPicker <= 9):
+      numberPicker = (input("\nPick a number between [1 - 9]: "))
+      if(type(numberPicker) is int, (numberPicker >= 1 or numberPicker <= 9)):
         modifyArray(numberPicker, "X")
         possibleNumbers.remove(numberPicker)
       turnCounter += 1
-      #else:
+    except TypeError:
+        print("Please pick a number between [1 - 9]: ")
     except:
-      if(numberPicker > 9):
+      if(type(numberPicker) is int, (numberPicker > 9)):
         print("Please try again. Pick a number between [1 - 9]: ")
     #turnCounter += 1
-  # the other player's turn(In this case, it is the computer's turn)
+  # the other player's turn (In this case, it is the computer's turn)
   else:
     while(True):
       compChoice = random.choice(possibleNumbers)
@@ -130,6 +115,7 @@ while(leaveLoop == False):
     print("\nThe winner is,", winner, "!!!! Thank you for playing :-)")
     break
   elif(winner == "N"):
-    print("Its a tie between players!!")
     printGameBoard()
+    print("Its a tie between players!!! ;-|")
+    
   
