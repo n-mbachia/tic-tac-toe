@@ -15,7 +15,6 @@ def printGameBoard():
       print("", gameBoard[x][y], end=" |") # prints | seperatorin column as defined
   print("\n+---+---+---+") #prints last line
   
-printGameBoard() # invokes function
 
 def modifyArray(num, turn):
   num -= 1
@@ -85,14 +84,14 @@ turnCounter = 0
 while(leaveLoop == False):
   # it's the player turn
   if(turnCounter % 2 == 0):
-    printGameBoard()
+    printGameBoard()  # invokes function
     try:
-      numberPicker = (input("\nPick a number between [1 - 9]: "))
+      numberPicker = int(input("\nPick a number between [1 - 9]: "))
       if(type(numberPicker) is int, (numberPicker >= 1 or numberPicker <= 9)):
         modifyArray(numberPicker, "X")
         possibleNumbers.remove(numberPicker)
       turnCounter += 1
-    except TypeError:
+    except ValueError:
         print("Please pick a number between [1 - 9]: ")
     except:
       if(type(numberPicker) is int, (numberPicker > 9)):
@@ -111,11 +110,9 @@ while(leaveLoop == False):
 
   winner = winnerCheck(gameBoard)
   if(winner != "N"):
-    printGameBoard()
     print("\nThe winner is,", winner, "!!!! Thank you for playing :-)")
     break
   elif(winner == "N"):
-    printGameBoard()
     print("Its a tie between players!!! ;-|")
-    
+     
   
